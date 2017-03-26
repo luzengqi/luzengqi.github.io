@@ -11,7 +11,7 @@
   <meta name="description" content="先上两张图，比较清晰地解释了java中常用集合之间的关系。
 
 
-##HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。2.HashMap允许键值为空，HashTable不允许。3.方">
+#HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。2.HashMap允许键值为空，HashTable不允许。3.方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="认识HashMap和Hashtable">
 <meta property="og:url" content="https://luzengqi.github.io/2017/03/26/认识HashMap和Hashtable/index.html">
@@ -19,22 +19,18 @@
 <meta property="og:description" content="先上两张图，比较清晰地解释了java中常用集合之间的关系。
 
 
-##HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。2.HashMap允许键值为空，HashTable不允许。3.方">
+#HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。2.HashMap允许键值为空，HashTable不允许。3.方法">
 <meta property="og:image" content="http://pic4.zhimg.com/v2-2f385a56de5d581e6481738f8c705027_b.png">
 <meta property="og:image" content="http://pic1.zhimg.com/v2-3109acc958eb8c7b44850b23fad9eef0_b.png">
 <meta property="og:image" content="https://pic1.zhimg.com/8db4a3bdfb238da1a1c4431d2b6e075c_b.png">
 <meta property="og:image" content="http://pic3.zhimg.com/v2-d947c3cf326a1e49d999cab506acfbda_b.jpg">
-<meta property="og:image" content="https://zhuanlan.zhihu.com/p/21673805">
-<meta property="og:image" content="https://zhuanlan.zhihu.com/p/24338517">
-<meta property="og:image" content="https://developer.android.google.cn/reference/java/util/Hashtable.html">
-<meta property="og:image" content="https://developer.android.google.cn/reference/java/util/HashMap.html">
-<meta property="og:updated_time" content="2017-03-26T12:55:31.977Z">
+<meta property="og:updated_time" content="2017-03-26T13:01:11.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="认识HashMap和Hashtable">
 <meta name="twitter:description" content="先上两张图，比较清晰地解释了java中常用集合之间的关系。
 
 
-##HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。2.HashMap允许键值为空，HashTable不允许。3.方">
+#HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。2.HashMap允许键值为空，HashTable不允许。3.方法">
 <meta name="twitter:image" content="http://pic4.zhimg.com/v2-2f385a56de5d581e6481738f8c705027_b.png">
   
     <link rel="alternative" href="/atom.xml" title="jameslzq - 博客" type="application/atom+xml">
@@ -186,25 +182,25 @@
         <p>先上两张图，比较清晰地解释了java中常用集合之间的关系。</p>
 <p><img src="http://pic4.zhimg.com/v2-2f385a56de5d581e6481738f8c705027_b.png" alt=""></p>
 <p><img src="http://pic1.zhimg.com/v2-3109acc958eb8c7b44850b23fad9eef0_b.png" alt=""></p>
-<p>##HashMap与Hashtable的区别<br>1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。<br>2.HashMap允许键值为空，HashTable不允许。<br>3.方法上，HashMap去掉了Hashtable的contains方法。<br>4.Hashtable是基于陈旧的Dictionary的Map接口的实现，而HashMap是基于哈希表的Map接口的实现<br>5.HashMap的iterator迭代器执行快速失败机制，也就是说在迭代过程中修改集合结构，除非调用迭代器自身的remove方法，否则以其他任何方式的修改都将抛出并发修改异常。而Hashtable返回的Enumeration不是快速失败的。</p>
-<p>##认识HashMap</p>
-<p>###HashMap的存储结构<br>HashMap是用<strong>数组+链表+红黑树</strong>（jdk1.8）来实现的。</p>
+<p>#HashMap与Hashtable的区别<br>1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。<br>2.HashMap允许键值为空，HashTable不允许。<br>3.方法上，HashMap去掉了Hashtable的contains方法。<br>4.Hashtable是基于陈旧的Dictionary的Map接口的实现，而HashMap是基于哈希表的Map接口的实现<br>5.HashMap的iterator迭代器执行快速失败机制，也就是说在迭代过程中修改集合结构，除非调用迭代器自身的remove方法，否则以其他任何方式的修改都将抛出并发修改异常。而Hashtable返回的Enumeration不是快速失败的。</p>
+<p>#认识HashMap</p>
+<p>##HashMap的存储结构<br>HashMap是用<strong>数组+链表+红黑树</strong>（jdk1.8）来实现的。</p>
 <p><img src="https://pic1.zhimg.com/8db4a3bdfb238da1a1c4431d2b6e075c_b.png" alt=""></p>
 <p>哈希表为解决冲突，可以采用开放地址法和链地址法等来解决问题，Java中HashMap采用了<strong>链地址</strong>法。hash表的每个元素又分别链接着一个单链表，元素为头结点，如果不同的key映射到了相同的下标，那么就使用头插法，插入到该元素对应的链表。</p>
-<p>###HashMap的负载因子<br>首先，HashMap的初始化长度length(默认值是16)，Load factor为负载因子(默认值是0.75)。<br><strong>负载因子=哈希表中的元素/哈希表的长度</strong></p>
+<p>##HashMap的负载因子<br>首先，HashMap的初始化长度length(默认值是16)，Load factor为负载因子(默认值是0.75)。<br><strong>负载因子=哈希表中的元素/哈希表的长度</strong></p>
 <p>默认的负载因子0.75是对空间和时间效率的一个平衡选择</p>
 <p>哈希表长度固定的情况下<br>当负载因子增大，空间的利用率增大，Hash冲突的概率增加，在进行get，put操作时,消耗更多时间,节约内存;<br>当负载因子减小，空间的利用率减小，Hash冲突的概率降低，读取性能更好,但会占用更多内存;</p>
-<h3 id="能否让HashMap实现线程安全，如何做？"><a href="#能否让HashMap实现线程安全，如何做？" class="headerlink" title="能否让HashMap实现线程安全，如何做？"></a>能否让HashMap实现线程安全，如何做？</h3><p>1、直接使用Hashtable，但是当一个线程访问HashTable的同步方法时，其他线程如果也要访问同步方法，会被阻塞住。举个例子，当一个线程使用put方法时，另一个线程不但不可以使用put方法，连get方法都不可以，效率很低，现在基本不会选择它了。<br>2、HashMap可以通过下面的语句进行同步：</p>
+<h2 id="能否让HashMap实现线程安全，如何做？"><a href="#能否让HashMap实现线程安全，如何做？" class="headerlink" title="能否让HashMap实现线程安全，如何做？"></a>能否让HashMap实现线程安全，如何做？</h2><p>1、直接使用Hashtable，但是当一个线程访问HashTable的同步方法时，其他线程如果也要访问同步方法，会被阻塞住。举个例子，当一个线程使用put方法时，另一个线程不但不可以使用put方法，连get方法都不可以，效率很低，现在基本不会选择它了。<br>2、HashMap可以通过下面的语句进行同步：</p>
 <p>Collections.synchronizeMap(hashMap);<br>3、直接使用JDK 5 之后的 ConcurrentHashMap，如果使用Java 5或以上的话，请使用ConcurrentHashMap。</p>
-<p>###JDK1.8中的HashMap<br>当HashMap因Hash冲突导致链表过长时,HashMap会动态的将它替换成一个红黑树，这话的话会将时间复杂度从O(n)降为O(logn),很大程度上提高了HashMap的性能。</p>
-<p>##HashTable<br><img src="http://pic3.zhimg.com/v2-d947c3cf326a1e49d999cab506acfbda_b.jpg" alt=""></p>
+<p>##JDK1.8中的HashMap<br>当HashMap因Hash冲突导致链表过长时,HashMap会动态的将它替换成一个红黑树，这话的话会将时间复杂度从O(n)降为O(logn),很大程度上提高了HashMap的性能。</p>
+<p>#认识HashTable<br><img src="http://pic3.zhimg.com/v2-d947c3cf326a1e49d999cab506acfbda_b.jpg" alt=""></p>
 <p>Hashtable继承于Dictionary类，实现了Map接口。Dictionary是声明了操作”键值对”函数接口的抽象类。 有一点注意，HashTable除了线程安全之外（其实是直接在方法上增加了synchronized关键字，比较古老，落后，低效的同步方式），还有就是它的key、value都不为null。另外Hashtable 也有 初始容量 和 加载因子。</p>
 <p>默认加载因子也是 0.75，HashTable在不指定容量的情况下的默认容量为11。</p>
-<p>参考文章：</p>
-<p>**<img src="https://zhuanlan.zhihu.com/p/21673805" alt="美团：Java 8系列之重新认识HashMap"></p>
-<p><img src="https://zhuanlan.zhihu.com/p/24338517" alt="极乐科技Java集合专题总结（1）：HashMap 和 HashTable 源码学习和面试总结"></p>
-<p><img src="https://developer.android.google.cn/reference/java/util/Hashtable.html" alt="官方hashtable API"></p>
-<p><img src="https://developer.android.google.cn/reference/java/util/HashMap.html" alt="官方HashMap api"><br>**</p>
+<p><strong>参考文章：</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/21673805" target="_blank" rel="external">美团：Java 8系列之重新认识HashMap</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/24338517" target="_blank" rel="external">极乐科技Java集合专题总结（1）：HashMap 和 HashTable 源码学习和面试总结</a></p>
+<p><a href="https://developer.android.google.cn/reference/java/util/Hashtable.html" target="_blank" rel="external">官方hashtable API</a></p>
+<p><a href="https://developer.android.google.cn/reference/java/util/HashMap.html" target="_blank" rel="external">官方HashMap api</a></p>
 
       
 
