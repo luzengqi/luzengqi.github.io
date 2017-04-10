@@ -6,32 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://luzengqi.github.io">
-  <title>认识HashMap和Hashtable | jameslzq - 博客</title>
+  <title>设计模式之禅读书笔记-单例模式 | jameslzq - 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="先上两张图，比较清晰地解释了java中常用集合之间的关系。
-
-
-HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。2.HashMap允许键值为空，HashTable不允许。3.方法上">
+  <meta name="description" content="设计模式之禅读书笔记-单例模式单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
+优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次">
 <meta property="og:type" content="article">
-<meta property="og:title" content="认识HashMap和Hashtable">
-<meta property="og:url" content="https://luzengqi.github.io/2017/03/26/认识HashMap和Hashtable/index.html">
+<meta property="og:title" content="设计模式之禅读书笔记-单例模式">
+<meta property="og:url" content="https://luzengqi.github.io/2017/04/10/设计模式之禅读书笔记-单例模式/index.html">
 <meta property="og:site_name" content="jameslzq - 博客">
-<meta property="og:description" content="先上两张图，比较清晰地解释了java中常用集合之间的关系。
-
-
-HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。2.HashMap允许键值为空，HashTable不允许。3.方法上">
-<meta property="og:image" content="http://pic4.zhimg.com/v2-2f385a56de5d581e6481738f8c705027_b.png">
-<meta property="og:image" content="http://pic1.zhimg.com/v2-3109acc958eb8c7b44850b23fad9eef0_b.png">
-<meta property="og:image" content="https://pic1.zhimg.com/8db4a3bdfb238da1a1c4431d2b6e075c_b.png">
-<meta property="og:image" content="http://pic3.zhimg.com/v2-d947c3cf326a1e49d999cab506acfbda_b.jpg">
-<meta property="og:updated_time" content="2017-03-26T13:12:55.212Z">
+<meta property="og:description" content="设计模式之禅读书笔记-单例模式单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
+优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次">
+<meta property="og:updated_time" content="2017-04-10T15:24:30.178Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="认识HashMap和Hashtable">
-<meta name="twitter:description" content="先上两张图，比较清晰地解释了java中常用集合之间的关系。
-
-
-HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。2.HashMap允许键值为空，HashTable不允许。3.方法上">
-<meta name="twitter:image" content="http://pic4.zhimg.com/v2-2f385a56de5d581e6481738f8c705027_b.png">
+<meta name="twitter:title" content="设计模式之禅读书笔记-单例模式">
+<meta name="twitter:description" content="设计模式之禅读书笔记-单例模式单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
+优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次">
   
     <link rel="alternative" href="/atom.xml" title="jameslzq - 博客" type="application/atom+xml">
   
@@ -159,48 +148,81 @@ HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtab
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-认识HashMap和Hashtable" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-设计模式之禅读书笔记-单例模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      认识HashMap和Hashtable
+      设计模式之禅读书笔记-单例模式
     </h1>
   
 
         
-        <a href="/2017/03/26/认识HashMap和Hashtable/" class="archive-article-date">
-  	<time datetime="2017-03-26T11:55:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-26</time>
+        <a href="/2017/04/10/设计模式之禅读书笔记-单例模式/" class="archive-article-date">
+  	<time datetime="2017-04-10T15:21:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>先上两张图，比较清晰地解释了java中常用集合之间的关系。</p>
-<p><img src="http://pic4.zhimg.com/v2-2f385a56de5d581e6481738f8c705027_b.png" alt=""></p>
-<p><img src="http://pic1.zhimg.com/v2-3109acc958eb8c7b44850b23fad9eef0_b.png" alt=""></p>
-<h1 id="HashMap与Hashtable的区别"><a href="#HashMap与Hashtable的区别" class="headerlink" title="HashMap与Hashtable的区别"></a>HashMap与Hashtable的区别</h1><p>1.HashMap不是同步的，线程不安全。hashtable则是同步的，线程安全，但不建议在新代码中使用，在不需要线程安全的情况下，可以用HashMap代替，在需要线程安全的情况，可以使用ConcurrentHashMap替代。<br>2.HashMap允许键值为空，HashTable不允许。<br>3.方法上，HashMap去掉了Hashtable的contains方法。<br>4.Hashtable是基于陈旧的Dictionary的Map接口的实现，而HashMap是基于哈希表的Map接口的实现<br>5.HashMap的iterator迭代器执行快速失败机制，也就是说在迭代过程中修改集合结构，除非调用迭代器自身的remove方法，否则以其他任何方式的修改都将抛出并发修改异常。而Hashtable返回的Enumeration不是快速失败的。</p>
-<h1 id="认识HashMap"><a href="#认识HashMap" class="headerlink" title="认识HashMap"></a>认识HashMap</h1><h2 id="HashMap的存储结构"><a href="#HashMap的存储结构" class="headerlink" title="HashMap的存储结构"></a>HashMap的存储结构</h2><p>HashMap是用<strong>数组+链表+红黑树</strong>（jdk1.8）来实现的。</p>
-<p><img src="https://pic1.zhimg.com/8db4a3bdfb238da1a1c4431d2b6e075c_b.png" alt=""></p>
-<p>哈希表为解决冲突，可以采用开放地址法和链地址法等来解决问题，Java中HashMap采用了<strong>链地址</strong>法。hash表的每个元素又分别链接着一个单链表，元素为头结点，如果不同的key映射到了相同的下标，那么就使用头插法，插入到该元素对应的链表。</p>
-<h2 id="HashMap的负载因子"><a href="#HashMap的负载因子" class="headerlink" title="HashMap的负载因子"></a>HashMap的负载因子</h2><p>首先，HashMap的初始化长度length(默认值是16)，Load factor为负载因子(默认值是0.75)。<br><strong>负载因子=哈希表中的元素/哈希表的长度</strong></p>
-<p>默认的负载因子0.75是对空间和时间效率的一个平衡选择</p>
-<p>哈希表长度固定的情况下<br>当负载因子增大，空间的利用率增大，Hash冲突的概率增加，在进行get，put操作时,消耗更多时间,节约内存;<br>当负载因子减小，空间的利用率减小，Hash冲突的概率降低，读取性能更好,但会占用更多内存;</p>
-<h2 id="能否让HashMap实现线程安全，如何做？"><a href="#能否让HashMap实现线程安全，如何做？" class="headerlink" title="能否让HashMap实现线程安全，如何做？"></a>能否让HashMap实现线程安全，如何做？</h2><p>1、直接使用Hashtable，但是当一个线程访问HashTable的同步方法时，其他线程如果也要访问同步方法，会被阻塞住。举个例子，当一个线程使用put方法时，另一个线程不但不可以使用put方法，连get方法都不可以，效率很低，现在基本不会选择它了。<br>2、HashMap可以通过下面的语句进行同步：</p>
-<p>Collections.synchronizeMap(hashMap);<br>3、直接使用JDK 5 之后的 ConcurrentHashMap，如果使用Java 5或以上的话，请使用ConcurrentHashMap。</p>
-<h2 id="JDK1-8中的HashMap"><a href="#JDK1-8中的HashMap" class="headerlink" title="JDK1.8中的HashMap"></a>JDK1.8中的HashMap</h2><p>当HashMap因Hash冲突导致链表过长时,HashMap会动态的将它替换成一个红黑树，这话的话会将时间复杂度从O(n)降为O(logn),很大程度上提高了HashMap的性能。</p>
-<h1 id="认识HashTable"><a href="#认识HashTable" class="headerlink" title="认识HashTable"></a>认识HashTable</h1><p><img src="http://pic3.zhimg.com/v2-d947c3cf326a1e49d999cab506acfbda_b.jpg" alt=""></p>
-<p>Hashtable继承于Dictionary类，实现了Map接口。Dictionary是声明了操作”键值对”函数接口的抽象类。 有一点注意，HashTable除了线程安全之外（其实是直接在方法上增加了synchronized关键字，比较古老，落后，低效的同步方式），还有就是它的key、value都不为null。另外Hashtable 也有 初始容量 和 加载因子。</p>
-<p>默认加载因子也是 0.75，HashTable在不指定容量的情况下的默认容量为11。</p>
-<p><strong>参考文章：</strong></p>
-<p><a href="https://zhuanlan.zhihu.com/p/21673805" target="_blank" rel="external">美团：Java 8系列之重新认识HashMap</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/24338517" target="_blank" rel="external">极乐科技Java集合专题总结（1）：HashMap 和 HashTable 源码学习和面试总结</a></p>
-<p><a href="https://developer.android.google.cn/reference/java/util/Hashtable.html" target="_blank" rel="external">官方hashtable API</a></p>
-<p><a href="https://developer.android.google.cn/reference/java/util/HashMap.html" target="_blank" rel="external">官方HashMap api</a></p>
+        <h1 id="设计模式之禅读书笔记-单例模式"><a href="#设计模式之禅读书笔记-单例模式" class="headerlink" title="设计模式之禅读书笔记-单例模式"></a>设计模式之禅读书笔记-单例模式</h1><h2 id="单例模式的定义"><a href="#单例模式的定义" class="headerlink" title="单例模式的定义"></a>单例模式的定义</h2><p>单例模式是以个比较简单的模式，其定义如下：<br>Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）</p>
+<p>优点：<br>单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次调用容易导致结果出现错误，而使用单例模式能够保证整个应用中有且只有一个实例。可以在系统设置全局的访问点，优化和共享资源访问。</p>
+<p>缺点：<br>单例模式一般没有接口，拓展困难，除了修改代码基本没有第二种途径可以实现；对测试不利，单例模式没有完成，是不能进行测试的；单例模式与单一职责原则有冲突。</p>
+<p>理解懒汉与饿汉：<br><strong>懒汉和饿汉的本质区别，就是实例化对象的时机。</strong></p>
+<p>“懒汉式”是在你真正用到的时候才去建这个单例对象。<br>“饿汉式”类加载的时候，就把单例的初始化完成了。</p>
+<h2 id="如何写好单例模式？"><a href="#如何写好单例模式？" class="headerlink" title="如何写好单例模式？"></a>如何写好单例模式？</h2><h3 id="不好的写法："><a href="#不好的写法：" class="headerlink" title="不好的写法："></a>不好的写法：</h3><p>第一种：懒汉式，线程不安全，多线程情况会出现错误。</p>
+<pre><code>public Class Singleton{
 
+    private static Singleton instance;
+
+    private Singleton (){} 
+    public static Singleton getInstance(){
+        if(instance == null){
+
+            instance = new Singleton();
+        }
+
+        return instance ;
+}
+
+}
+</code></pre><p>第二种 懒汉，线程安全。在getInstance()加上synchronized,实现同步,此时线程安全，但是只在第一次 </p>
+<pre><code>public class Singleton {  
+    private static Singleton instance;  
+    private Singleton (){}  
+    public static synchronized Singleton getInstance() {  
+        if (instance == null) {  
+            instance = new Singleton();  
+    }  
+            return instance;  
+    }  
+}
+</code></pre><h3 id="推荐写法："><a href="#推荐写法：" class="headerlink" title="推荐写法："></a>推荐写法：</h3><p>第一种：饿汉式。缺点是它不是一种懒加载模式，单例会在加载类后一开始就被初始化。</p>
+<pre><code>public class Singleton{
+//类加载时就初始化
+    private static final Singleton instance = new Singleton();
+
+    private Singleton(){}
+    public static Singleton getInstance(){
+        return instance;
+    }
+}
+</code></pre><p>第二种：<strong>静态内部类法。最推荐的写法，这种写法仍然使用JVM本身机制保证了线程安全问题；由于 SingletonHolder 是私有的，除了 getInstance() 之外没有办法访问它，因此它是懒汉式的；同时读取实例的时候不会进行同步，没有性能缺陷。</strong></p>
+<pre><code>public class Singleton {
+    private static class SingletonHolder{
+        private static final Singleton INSTANCE = new Singleton();
+    }
+
+    private Singleton(){}
+
+    public static Singleton getInstance(){
+        return SingletonHolder.INSTANCE;
+    }
+}
+</code></pre>
       
 
       
@@ -279,7 +301,7 @@ HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtab
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://luzengqi.github.io/2017/03/26/认识HashMap和Hashtable/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://luzengqi.github.io/2017/04/10/设计模式之禅读书笔记-单例模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +315,9 @@ HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtab
   
 <nav id="article-nav">
   
-    <a href="/2017/04/10/设计模式之禅读书笔记-单例模式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          设计模式之禅读书笔记-单例模式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/03/26/认识HashMap和Hashtable/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">认识HashMap和Hashtable</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -318,7 +331,7 @@ HashMap与Hashtable的区别1.HashMap不是同步的，线程不安全。hashtab
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="认识HashMap和Hashtable" data-title="认识HashMap和Hashtable" data-url="https://luzengqi.github.io/2017/03/26/认识HashMap和Hashtable/"></div>
+	<div class="ds-thread" data-thread-key="设计模式之禅读书笔记-单例模式" data-title="设计模式之禅读书笔记-单例模式" data-url="https://luzengqi.github.io/2017/04/10/设计模式之禅读书笔记-单例模式/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
