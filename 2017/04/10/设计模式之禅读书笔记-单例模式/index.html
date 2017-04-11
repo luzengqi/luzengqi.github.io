@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://luzengqi.github.io">
   <title>设计模式之禅读书笔记-单例模式 | jameslzq - 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="设计模式之禅读书笔记-单例模式单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
-优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次">
+  <meta name="description" content="单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
+优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次调用容易导致结果出现错误，而使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式之禅读书笔记-单例模式">
 <meta property="og:url" content="https://luzengqi.github.io/2017/04/10/设计模式之禅读书笔记-单例模式/index.html">
 <meta property="og:site_name" content="jameslzq - 博客">
-<meta property="og:description" content="设计模式之禅读书笔记-单例模式单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
-优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次">
-<meta property="og:updated_time" content="2017-04-10T15:24:30.178Z">
+<meta property="og:description" content="单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
+优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次调用容易导致结果出现错误，而使">
+<meta property="og:updated_time" content="2017-04-11T04:10:15.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之禅读书笔记-单例模式">
-<meta name="twitter:description" content="设计模式之禅读书笔记-单例模式单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
-优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次">
+<meta name="twitter:description" content="单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
+优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次调用容易导致结果出现错误，而使">
   
     <link rel="alternative" href="/atom.xml" title="jameslzq - 博客" type="application/atom+xml">
   
@@ -168,7 +168,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="设计模式之禅读书笔记-单例模式"><a href="#设计模式之禅读书笔记-单例模式" class="headerlink" title="设计模式之禅读书笔记-单例模式"></a>设计模式之禅读书笔记-单例模式</h1><h2 id="单例模式的定义"><a href="#单例模式的定义" class="headerlink" title="单例模式的定义"></a>单例模式的定义</h2><p>单例模式是以个比较简单的模式，其定义如下：<br>Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）</p>
+        <h2 id="单例模式的定义"><a href="#单例模式的定义" class="headerlink" title="单例模式的定义"></a>单例模式的定义</h2><p>单例模式是以个比较简单的模式，其定义如下：<br>Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）</p>
 <p>优点：<br>单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次调用容易导致结果出现错误，而使用单例模式能够保证整个应用中有且只有一个实例。可以在系统设置全局的访问点，优化和共享资源访问。</p>
 <p>缺点：<br>单例模式一般没有接口，拓展困难，除了修改代码基本没有第二种途径可以实现；对测试不利，单例模式没有完成，是不能进行测试的；单例模式与单一职责原则有冲突。</p>
 <p>理解懒汉与饿汉：<br><strong>懒汉和饿汉的本质区别，就是实例化对象的时机。</strong></p>
