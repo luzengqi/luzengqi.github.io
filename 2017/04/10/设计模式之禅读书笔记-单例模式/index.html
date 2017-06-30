@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="jameslzq - 博客">
 <meta property="og:description" content="单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
 优点：单例模式主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次调用容易导致结果出现错误，而使">
-<meta property="og:updated_time" content="2017-04-11T13:02:37.462Z">
+<meta property="og:updated_time" content="2017-06-30T05:09:29.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之禅读书笔记-单例模式">
 <meta name="twitter:description" content="单例模式的定义单例模式是以个比较简单的模式，其定义如下：Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
@@ -173,7 +173,7 @@
 <p><strong>缺点：</strong><br>单例模式一般没有接口，拓展困难，除了修改代码基本没有第二种途径可以实现；对测试不利，单例模式没有完成，是不能进行测试的；单例模式与单一职责原则有冲突。</p>
 <p>理解懒汉与饿汉：<br><strong>懒汉和饿汉的本质区别，就是实例化对象的时机。</strong></p>
 <p>“懒汉式”是在你真正用到的时候才去建这个单例对象。<br>“饿汉式”类加载的时候，就把单例的初始化完成了。</p>
-<h2 id="如何写好单例模式？"><a href="#如何写好单例模式？" class="headerlink" title="如何写好单例模式？"></a>如何写好单例模式？</h2><h3 id="不好的写法："><a href="#不好的写法：" class="headerlink" title="不好的写法："></a>不好的写法：</h3><p>第一种：懒汉式，线程不安全，多线程情况会出现错误。</p>
+<h2 id="如何写好单例模式？"><a href="#如何写好单例模式？" class="headerlink" title="如何写好单例模式？"></a>如何写好单例模式？</h2><h3 id="不好的写法："><a href="#不好的写法：" class="headerlink" title="不好的写法："></a>不好的写法：</h3><p>第一种：懒汉式。多线程情况下，多个线程可以同时通过<br>If(singleton == null) 创建多个Singleton()，所以是线程不安全的。</p>
 <pre><code>public Class Singleton{
 
     private static Singleton instance;
@@ -181,7 +181,6 @@
     private Singleton (){} 
     public static Singleton getInstance(){
         if(instance == null){
-
             instance = new Singleton();
         }
 
@@ -189,7 +188,7 @@
 }
 
 }
-</code></pre><p>第二种 懒汉，线程安全。在getInstance()加上synchronized,实现同步,此时线程安全，但是只在第一次 </p>
+</code></pre><p>第二种 懒汉，线程安全。在getInstance()加上synchronized,实现同步,此时线程安全，但是在方法加上synchronized后，在一个线程执行getInstance()的，其他线程都被阻塞了，所以性能比较低下。</p>
 <pre><code>public class Singleton {  
     private static Singleton instance;  
     private Singleton (){}  
@@ -200,7 +199,27 @@
             return instance;  
     }  
 }
-</code></pre><h3 id="推荐写法："><a href="#推荐写法：" class="headerlink" title="推荐写法："></a>推荐写法：</h3><p>第一种：饿汉式。缺点是它不是一种懒加载模式，单例会在加载类后一开始就被初始化。</p>
+</code></pre><p>下面我们看比较高效+线程安全的写法。</p>
+<p>第一种： 双重检查锁定（double-checked locking) ，这种写法在第一次初始化之后，其他线程再来getInstance的时候会省掉很多因为同步带来的的性能消耗。</p>
+<pre><code>public class Singleton{
+    private static Singleton instance;
+        private Singleton(){}
+        public static Singleton getInstance(){
+            if(instance == null){
+                synchronized(Singleton.class){
+                     if(instance == null){
+                        instance = new Singleton();
+                      }
+                }
+            }
+            return instance;
+    }
+}
+</code></pre><p><strong>但是，这个版本的写法在指令重排的情况下会出错</strong>。<br>可以在 private static Singleton instance  加入 volatile  改为<br><strong>private static volatile Singleton instance</strong></p>
+<p>volatile：这个关键字有两层语义。第一层语义相信大家都比较熟悉，就是可见性。可见性指的是在一个线程中对该变量的修改会马上由工作内存（Work Memory）写回主内存（Main Memory），所以会马上反应在其它线程的读取操作中。顺便一提，工作内存和主内存可以近似理解为实际电脑中的高速缓存和主存，工作内存是线程独享的，主存是线程共享的。volatile的第二层语义是禁止指令重排序优化。</p>
+<p><strong>这样子应该可以了吧？</strong></p>
+<p>然而，<strong>禁止指令重排优化这条语义在jdk1.5以后才能正确工作</strong><br>关于这个写法存在的问题，涉及到的知识比较深入了，现在暂时不做深究，感兴趣的朋友可以尝试阅读《深入理解JVM》里面<strong>类加载</strong>的相关内容。<br>此外DCL还有其他的写法，比如从synchronized一个类改成一个static 的Object对象。</p>
+<p>第二种：饿汉式。缺点是它不是一种懒加载模式，单例会在加载类后一开始就被初始化。</p>
 <pre><code>public class Singleton{
 //类加载时就初始化
     private static final Singleton instance = new Singleton();
@@ -210,7 +229,7 @@
         return instance;
     }
 }
-</code></pre><p>第二种：<strong>静态内部类法。最推荐的写法，这种写法仍然使用JVM本身机制保证了线程安全问题；由于 SingletonHolder 是私有的，除了 getInstance() 之外没有办法访问它，因此它是懒汉式的；同时读取实例的时候不会进行同步，没有性能缺陷。</strong></p>
+</code></pre><p>第三种：Effective Java 推荐单例用法：<strong>静态内部类法。这种写法仍然使用JVM本身机制保证了线程安全问题；由于 SingletonHolder 是私有的，除了 getInstance() 之外没有办法访问它，因此它是懒汉式的；同时读取实例的时候不会进行同步，没有性能缺陷。</strong></p>
 <pre><code>public class Singleton {
     private static class SingletonHolder{
         private static final Singleton INSTANCE = new Singleton();
